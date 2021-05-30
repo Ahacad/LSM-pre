@@ -30,12 +30,11 @@ highlighter: shiki
  
 ---
 
-# Conclusion
+# Conclusions
 
 - the two-phase approach to evaluate the impact of write stalls
 - design choices for LSM merge schedulers: full-merges and partitioned merges
 - consider **performance variance** and **write throughput** together
-
 ---
 
 # References
