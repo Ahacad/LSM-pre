@@ -21,13 +21,44 @@ highlighter: shiki
 - Introduction to LSM-tree 
 ---
 
-# LSM (Log-Structured Merge-Tree)
+# LSM (Log-Structured Merge-Tree) - 1
 
-- **buffers** all writes in memory, and **flushes** them to disk and **merges** later
-- only append operations (insert OR update)
 
-- quick write, but slow read
- 
+<div class="grid grid-cols-2">
+<figure>
+<img src="inplace-outofplace.png" alt="in-place vs. out-of-place" width="200"/>
+<figcaption class="pl-20 text-xs">Fig. 1</figcaption>
+</figure>
+<figure>
+<img src="lsm-tree-original.png" alt="LSM-tree Original design" width="250"/>
+<figcaption class="pl-30 text-xs">Fig. 2</figcaption>
+</figure>
+</div>
+
+- unlike B+ tree (in-place update) which overwrites old entries, we store updates into new locations <span class="text-gray-400">(Fig. 1)</span>
+- only append operations (insert OR update), delete = anti-insert, it's like writing everything into a "log"
+
+- **buffers** all writes in memory ($C_0$), and **flushes** them to disk and **merges** later<span class="text-gray-400">(Fig. 2)</span>
+
+- quick write (due to sequential I/Os), but slow read
+---
+
+# LSM (Log-Structured Merge-Tree) - 2
+
+<div class="grid grid-cols-2">
+<div>
+<ul>
+ <li>two merging policies: leveling merge policy & tiering merge policy</li>
+</ul>
+</div>
+
+<figure class="m-auto">
+<img src="policies.png" alt="in-place vs. out-of-place" width="300"/>
+<figcaption class="pl-20 text-xs">Fig. 1</figcaption>
+</figure>
+
+</div>
+
 ---
 
 # Conclusions
