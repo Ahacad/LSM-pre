@@ -10,7 +10,9 @@ highlighter: shiki
 ---
 # On Performance Stability in LSM-based Storage Systems
 
-<a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
+<div class="text-gray-400">Check the website <a href="https://ahacad.github.io/LSM-pre">https://ahacad.github.io/LSM-pre</a> for online slides.</div>
+
+<a href="https://ahacad.github.io/LSM-pre" target="_blank" alt="GitHub"
   class="abs-br m-6 text-xl icon-btn opacity-50 !border-none !hover:text-white">
   <carbon-logo-github />
 </a>
