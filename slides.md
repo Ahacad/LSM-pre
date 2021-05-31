@@ -26,11 +26,11 @@ highlighter: shiki
 
 <div class="grid grid-cols-2">
 <figure>
-<img src="./inplace-outofplace.png" alt="in-place vs. out-of-place" width="200"/>
+<img src="/inplace-outofplace.png" alt="in-place vs. out-of-place" width="200"/>
 <figcaption class="pl-20 text-xs">Fig. 1</figcaption>
 </figure>
 <figure>
-<img src="./lsm-tree-original.png" alt="LSM-tree Original design" width="250"/>
+<img src="/lsm-tree-original.png" alt="LSM-tree Original design" width="250"/>
 <figcaption class="pl-30 text-xs">Fig. 2</figcaption>
 </figure>
 </div>
@@ -53,7 +53,7 @@ highlighter: shiki
 </div>
 
 <figure class="m-auto">
-<img src="./policies.png" alt="in-place vs. out-of-place" width="300"/>
+<img src="/policies.png" alt="in-place vs. out-of-place" width="300"/>
 <figcaption class="pl-20 text-xs">Fig. 1</figcaption>
 </figure>
 
