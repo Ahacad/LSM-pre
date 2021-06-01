@@ -19,8 +19,25 @@ highlighter: shiki
 ---
 
 # Table of contents
+<div class="mt-8">
+<ul class="flex flex-col">
+<li>Introduction to LSM-tree</li>
+<li>Experiments methods</li>
+<li>Conclusions</li>
+<li>References</li>
+</ul>
+</div>
+---
 
-- Introduction to LSM-tree 
+# Roadmap
+<div class="mt-8">
+<ul class="flex flex-col">
+<li class="">Introduction to LSM-tree</li>
+<li class="text-gray-400">Experiments methods</li>
+<li class="text-gray-400">Conclusions</li>
+<li class="text-gray-400">References</li>
+</ul>
+</div>
 ---
 
 # LSM (Log-Structured Merge-Tree) - 1
@@ -38,7 +55,7 @@ highlighter: shiki
 </div>
 
 - unlike B+ tree (in-place update) which overwrites old entries, we store updates into new locations <span class="text-gray-400">(Fig. 1)</span>
-- only append operations (insert OR update), delete = anti-insert, it's like writing everything into a "log"
+- only append operations (insert OR update), delete = anti-matter entry, like writing everything into a "log"
 
 - **buffers** all writes in memory ($C_0$), and **flushes** them to disk and **merges** later<span class="text-gray-400">(Fig. 2)</span>
 
@@ -47,20 +64,20 @@ highlighter: shiki
 
 # LSM (Log-Structured Merge-Tree) - 2
 
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-2 pt-8">
 <div>
 <ul>
+  <li>today's LSM-tree use <span class="font-bold">merging</span> to reduce components examined when querying</li>
  <li>two merging policies: leveling merge policy & tiering merge policy</li>
 </ul>
 </div>
 
 <figure class="m-auto">
 <img src="/policies.png" alt="in-place vs. out-of-place" width="300"/>
-<figcaption class="pl-20 text-xs">Fig. 1</figcaption>
+<figcaption class="pl-34 text-xs">Fig. 1</figcaption>
 </figure>
 
 </div>
-
 ---
 
 # Conclusions
