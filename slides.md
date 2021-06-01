@@ -21,29 +21,18 @@ highlighter: shiki
 # A look ahead
 
 
-
 ---
 
 # Table of contents
-<div class="mt-8">
-<ul class="flex flex-col">
-<li>Introduction to LSM-tree</li>
-<li>Setups and Measuring Models</li>
-<li>Conclusions</li>
-<li>References</li>
-</ul>
-</div>
+<div class="mt-8"/>
+
+<TOC allblack />
 ---
 
 # Roadmap
-<div class="mt-8">
-<ul class="flex flex-col">
-<li class="">Introduction to LSM-tree</li>
-<li class="text-gray-400">Experiments methods</li>
-<li class="text-gray-400">Conclusions</li>
-<li class="text-gray-400">References</li>
-</ul>
-</div>
+<div class="mt-8"/>
+
+<TOC count="0"/>
 ---
 
 # LSM (Log-Structured Merge-Tree) - 1
