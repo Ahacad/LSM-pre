@@ -64,11 +64,14 @@ highlighter: shiki
 
 # LSM (Log-Structured Merge-Tree) - 2
 
-<div class="grid grid-cols-2 pt-8">
+<div class="mt-12"/>
+<div class="grid grid-cols-2">
 <div>
 <ul>
   <li>today's LSM-tree use <span class="font-bold">merging</span> to reduce components examined when querying</li>
- <li>two merging policies: leveling merge policy & tiering merge policy</li>
+  <li>two merging policies: leveling merge policy & tiering merge policy</li>
+  <li><span class="font-bold">leveling</span>: 1 component, merged with Level i-1 until big enough and then merged into Level i+1</li>
+  <li><span class="font-bold">tiering</span>: T components at Level i, then merged together to Level i+1</li>
 </ul>
 </div>
 
@@ -79,6 +82,26 @@ highlighter: shiki
 
 </div>
 ---
+
+# LSM (Log-Structured Merge-Tree) - 3
+
+<div class="mt-12"/>
+
+<figure class="m-auto">
+<img src="/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
+<figcaption class="pl-8 text-xs">Partitioned LSM-tree, Leveling Merge Policy</figcaption>
+</figure>
+
+<div class="mt-4"/>
+
+- **Partitioning**: large LSM disk component range-partitioned into multiple files for **optimization**
+
+- **Write Stalls**: 
+---
+
+
+
+
 
 # Conclusions
 
