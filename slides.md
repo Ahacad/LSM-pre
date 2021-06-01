@@ -18,11 +18,17 @@ highlighter: shiki
 </a>
 ---
 
+# A look ahead
+
+
+
+---
+
 # Table of contents
 <div class="mt-8">
 <ul class="flex flex-col">
 <li>Introduction to LSM-tree</li>
-<li>Experiments methods</li>
+<li>Setups and Measuring Models</li>
 <li>Conclusions</li>
 <li>References</li>
 </ul>
@@ -96,11 +102,21 @@ highlighter: shiki
 
 - **Partitioning**: large LSM disk component range-partitioned into multiple files for **optimization**
 
-- **Write Stalls**: 
+- **Write Stalls**: memory speed faster than I/Os, writing to memory will be **stalled** (the *write stall* problem)
+
+- **merges** are major cause of stalls, since components are merged multiple times, but writes only flush once
+
 ---
 
+# LSM (Log-Structured Merge-Tree) - Quick recap
 
 
+---
+
+# Setups and measuring models
+
+
+--- 
 
 
 # Conclusions
