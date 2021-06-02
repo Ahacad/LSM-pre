@@ -20,20 +20,28 @@ highlighter: shiki
 
 # A look ahead
 
-<
+*On Performance Stability in LSM-based Storage Systems*
+
+<img class="m-auto" src="/pics/stalls-rocksdb.png" alt="Write stalls in RocksDB" width="400"/>
+
+<div class="mt-8" />
+
+- Memory FASTER THAN disk
+- **writes stalls** happen when manipulating disks, and it affects usability
+- let's try to solve it
 
 ---
 
 # Table of contents
 <div class="mt-8"/>
 
-<TOC />
+<TOC class="mt-24" />
 ---
 
 # Roadmap
 <div class="mt-8"/>
 
-<TOC count="1"/>
+<TOC class="mt-24" count="1"/>
 ---
 
 # LSM (Log-Structured Merge-Tree) - 1
@@ -109,20 +117,52 @@ $a+b=c$
 
 </div>
 
+---
+
+# Roadmap
+<div class="mt-8"/>
+
+<TOC class="mt-24" count="2"/>
+---
+
+# Measuring Latency
 
 ---
 
-# Setups and measuring models
+# Roadmap
+<div class="mt-8"/>
 
+<TOC class="mt-24" count="3"/>
+---
 
---- 
+# Merge Shedulers 1 - full merges
 
+---
 
-# Conclusions
+# Merge Shedulers 2 - partitioned merges
+
+---
+
+# Roadmap
+<div class="mt-8"/>
+
+<TOC class="mt-24" count="4"/>
+
+---
+
+# Lessons and Conclusions
 
 - the two-phase approach to evaluate the impact of write stalls
 - design choices for LSM merge schedulers: full-merges and partitioned merges
 - consider **performance variance** and **write throughput** together
+
+---
+
+# Roadmap
+<div class="mt-8"/>
+
+<TOC class="mt-24" count="5"/>
+
 ---
 
 # References
