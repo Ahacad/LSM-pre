@@ -22,8 +22,9 @@ const getClass = (index: number) => {
 
 const items = [
   "Introduction to LSM-tree",
-  "Setups and Measuring Models",
-  "Conclusions",
+  "Measuring Latency",
+  "Merge Shedulers",
+  "Lessons and Conclusions",
   "References",
 ];
 </script>
