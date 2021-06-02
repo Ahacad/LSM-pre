@@ -5,23 +5,19 @@ const props = defineProps({
   count: {
     default: 0,
   },
-  allblack: {
-    default: false,
-    type: Boolean,
-  },
 });
 
 const counter = ref(props.count);
 
 const getClass = (index: number) => {
-  if (props.allblack) {
+  if (Number(counter.value) === 0) {
     return "text-black";
   }
-  const res = ["text-gray-400"];
-  if (index === Number(props.count)) {
-    res.push("text-black");
+  if (index + 1 === Number(counter.value)) {
+    return "text-black";
+  } else {
+    return "text-gray-400";
   }
-  return res;
 };
 
 const items = [

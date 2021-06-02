@@ -20,19 +20,20 @@ highlighter: shiki
 
 # A look ahead
 
+<
 
 ---
 
 # Table of contents
 <div class="mt-8"/>
 
-<TOC allblack />
+<TOC />
 ---
 
 # Roadmap
 <div class="mt-8"/>
 
-<TOC count="0"/>
+<TOC count="1"/>
 ---
 
 # LSM (Log-Structured Merge-Tree) - 1
