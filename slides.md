@@ -31,7 +31,7 @@ highlighter: shiki
 
 - Memory FASTER THAN disk
 - **writes stalls** happen when manipulating disks, and it affects usability
-- let's try to solve it
+- let's try to solve it by tweaking merge shedulers
 
 <arrow v-click="1" x1="600" y1="220" x2="698" y2="190" color="#324f15aa" width="1" arrowSize="1" />
 
@@ -49,13 +49,13 @@ highlighter: shiki
 <TOC class="mt-24" count="1"/>
 ---
 
-# LSM (Log-Structured Merge-Tree) - 1
+# LSM (Log-Structured Merge-Tree) - 1: Basics
 
 
 <div class="grid grid-cols-2">
 <figure>
-<img src="/pics/inplace-outofplace.png" alt="in-place vs. out-of-place" width="200"/>
-<figcaption class="pl-20 text-xs">Fig. 1</figcaption>
+<img class="m-auto" src="/pics/inplace-outofplace.png" alt="in-place vs. out-of-place" width="200"/>
+<figcaption class="pl-50 text-xs">Fig. 1</figcaption>
 </figure>
 <figure>
 <img src="/pics/lsm-tree-original.png" alt="LSM-tree Original design" width="250"/>
@@ -71,7 +71,7 @@ highlighter: shiki
 - quick write (due to sequential I/Os), but slow read
 ---
 
-# LSM (Log-Structured Merge-Tree) - 2
+# LSM (Log-Structured Merge-Tree) - 2: Merging
 
 <div class="mt-12"/>
 <div class="grid grid-cols-2">
@@ -92,7 +92,7 @@ highlighter: shiki
 </div>
 ---
 
-# LSM (Log-Structured Merge-Tree) - 3
+# LSM (Log-Structured Merge-Tree) - 3: Partitioning
 
 <div class="mt-12"/>
 
@@ -103,7 +103,8 @@ highlighter: shiki
 
 <div class="mt-4"/>
 
-- **Partitioning**: large LSM disk component range-partitioned into multiple files for **optimization**
+- **Partitioning**: large LSM disk component range-partitioned into multiple files for optimization
+- partitioning and merge policies can be used together, currently LevelDB and RocksDB use partitioned leveling policy
 
 - **Write Stalls**: memory speed faster than I/Os, writing to memory will be **stalled** (the *write stall* problem)
 
@@ -111,23 +112,11 @@ highlighter: shiki
 
 ---
 
-# LSM (Log-Structured Merge-Tree) - Quick recap
-
-<div>
-
-$a+b=c$
-
-- findout $\sum 3$
-
-
-</div>
-
----
-
 # Roadmap
 <div class="mt-8"/>
 
 <TOC class="mt-24" count="2"/>
+
 ---
 
 # Measuring Latency
