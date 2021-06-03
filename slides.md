@@ -20,15 +20,20 @@ highlighter: shiki
 
 # A look ahead
 
-*On Performance Stability in LSM-based Storage Systems*
+<span class="text-gray-400">*On Performance Stability in LSM-based Storage Systems*</span>
 
-<img class="m-auto" src="/pics/stalls-rocksdb.png" alt="Write stalls in RocksDB" width="400"/>
+<div class="grid grid-cols-2">
+<img class="m-auto" src="/pics/lsm-tree.jpg" alt="LSM-tree" width="250"/>
+<img class="m-auto" src="/pics/stalls-rocksdb.png" alt="Write stalls in RocksDB" width="250"/>
+</div>
 
 <div class="mt-8" />
 
 - Memory FASTER THAN disk
 - **writes stalls** happen when manipulating disks, and it affects usability
 - let's try to solve it
+
+<arrow v-click="1" x1="600" y1="220" x2="698" y2="190" color="#324f15aa" width="1" arrowSize="1" />
 
 ---
 
