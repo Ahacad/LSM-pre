@@ -138,6 +138,16 @@ highlighter: shiki
 
 ---
 
+# Measuring Latency
+<div class="mt-12"/>
+
+<img class="m-auto" src="/pics/two-phase-evaluation.png" alt="Two-Phase Evaluation of bLSM" width="650"/>
+<div class="mt-4"/>
+
+- write latency = processing latency + queuing latency
+
+---
+
 # Roadmap
 <div class="mt-8"/>
 
