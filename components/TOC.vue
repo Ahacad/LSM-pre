@@ -33,7 +33,9 @@ const items = [
   <div>
     <ul>
       <li v-for="(item, key) in items" :key="key" :class="getClass(key)">
-        {{ item }}
+        <a :href="$slidev.nav.currentPage">
+          {{ item }}
+        </a>
       </li>
     </ul>
   </div>
