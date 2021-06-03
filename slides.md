@@ -49,8 +49,13 @@ highlighter: shiki
 <TOC class="mt-24" count="1"/>
 ---
 
+<img class="m-auto" src="/pics/database-storage-engines.png" alt="in-place vs. out-of-place" width="800"/>
+
+---
+
 # LSM (Log-Structured Merge-Tree) - 1: Basics
 
+<div class="mt-12"/>
 
 <div class="grid grid-cols-2">
 <figure>
