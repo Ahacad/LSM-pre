@@ -119,7 +119,17 @@ highlighter: shiki
 
 ---
 
-# Measuring Latency
+# Measuring Latency: 2 phases
+
+<div class="mt-12"/>
+
+<img class="m-auto" src="/pics/measuring-models.png" alt="Measuring-Models" width="350"/>
+
+<div class="mt-4"/>
+
+- testing phase: use the closed system to measure *maximum write throughput* ($M$)
+
+- running phase: use the open system with a 95% $M$ to see if the write latency will be stable
 
 ---
 
