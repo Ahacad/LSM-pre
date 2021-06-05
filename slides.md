@@ -140,7 +140,7 @@ title: Measuring Latency
 
 <img class="m-auto" src="/pics/measuring-models.png" alt="Measuring-Models" width="350"/>
 
-<div class="mt-4"/>
+<div class="mt-12"/>
 
 - testing phase: use the closed system to measure *maximum write throughput* ($M$)
 
@@ -166,16 +166,33 @@ title: Measuring Latency
 
 # Full Merges Analyses - 1: Scheduling
 
+<div class="">
+
 - **global component constraint** better than local component constraint:
-  - limit on disk componet number
-  - more component = less write stalls BUT worse query performance
-- **process writes** as quickly as possible minimizes latencies
-- **concurrent merges** matter
-- finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span>
+  - component constraint: limit on disk componet number
+  - more component = less write stalls BUT worse query performance and takes more space
+  - local constraint: limit on each level
+  - global constraint: limit on all components
+- **process writes** as quickly as possible minimizes write latency:
+  - when *component constraint* violated, needs to slow down or stop writes
+  - current implementations (LevelDB, RocksDB, bLSM) prefers slowdown
+- **concurrent merges** matter:
+  - process merges on each level concurrently
+- finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span> for better variability performances:
+  - a *fair* scheduler allocate I/O bandwidth to all merges equally
+  - a <span class="font-bold text-red-400">greedy scheduler</span> prefers the merge with smallest remaining bytes first
+  - greedy scheduler minimizes number of components
+  
+</div>
 
 ---
 
 # Full Merges Analyses - 2: Experiments
+
+<img class="m-auto" src="/pics/full-running-1.png" alt="in-place vs. out-of-place" width="600"/>
+
+- stable write throughput can be achieved
+- the greedy scheduler does well
 
 ---
 
