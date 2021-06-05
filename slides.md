@@ -123,6 +123,8 @@ title: Introduction to LSM-tree
 
 # LSM (Log-Structured Merge-Tree): Recap
 
+- 
+
 ---
 
 # Roadmap
@@ -241,11 +243,23 @@ title: Measuring Latency
 
 ---
 
+# Partitioned Merges Analyses
+
+<img class="mx-auto" src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
+
+- s
+
+---
+
 # Lessons and Conclusions
 
-- the two-phase approach to evaluate the impact of write stalls
-- design choices for LSM merge schedulers: full-merges and partitioned merges
-- consider **performance variance** and **write throughput** together
+<div class="mt-20"/>
+
+- consider performance variance together with write throughput for usability
+- use the new two-phase approach to evaluate the impact of write stalls
+- a good scheduler can help achieve stable write throughput:
+  - for full merges, the proposed **greedy scheduler**
+  - for partitioned merges, 
 
 ---
 
