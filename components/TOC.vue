@@ -23,7 +23,8 @@ const getClass = (index: number) => {
 const items = [
   "Introduction to LSM-tree",
   "Measuring Latency",
-  "Merge Shedulers",
+  "Analyses on Merge Schedulers: Full Merges",
+  "Analyses on Merge Schedulers: Partitioned Merges",
   "Lessons and Conclusions",
   "References",
 ];
