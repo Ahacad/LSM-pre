@@ -36,7 +36,6 @@ title:
 - let's try to solve it by tweaking **merge shedulers**
 
 <arrow v-click="1" x1="600" y1="220" x2="698" y2="190" color="#324f15aa" width="1" arrowSize="1" />
-
 ---
 
 # Table of contents
@@ -118,13 +117,11 @@ title: Introduction to LSM-tree
 - **Write Stalls**: memory speed faster than I/Os, writing to memory will be **stalled** (the *write stall* problem)
 
 - **merges** are major cause of stalls, since components are merged multiple times, but writes only flush once
-
 ---
 
 # LSM (Log-Structured Merge-Tree): Recap
 
 - 
-
 ---
 
 # Roadmap
@@ -147,7 +144,6 @@ title: Measuring Latency
 - testing phase: use the closed system to measure *maximum write throughput* ($M$)
 
 - running phase: use the open system with a 95% $M$ to see if the write latency will be stable
-
 ---
 
 # Measuring Latency
@@ -157,7 +153,6 @@ title: Measuring Latency
 <div class="mt-12"/>
 
 - write latency = processing latency + queuing latency
-
 ---
 
 # Roadmap
@@ -190,7 +185,6 @@ title: Measuring Latency
 
 - **stable write throughput** can be achieved
 - the greedy scheduler does well
-
 ---
 
 # Merge Shedulers 2 - Global Constaint
@@ -202,7 +196,6 @@ title: Measuring Latency
   - more components = less write stalls BUT worse query performance and takes more space
   - local constraint: limit on each level
   - global constraint: limit on all components
- 
 ---
 
 # Merge Shedulers 2 - Write Quickly
@@ -212,19 +205,16 @@ title: Measuring Latency
 - **process writes** as quickly as possible minimizes write latency:
   - when *component constraint* violated, needs to slow down or stop writes
   - current implementations (LevelDB, RocksDB, bLSM) prefers slowdown
-
 ---
 
 # Merge Schedulers 2 - Query Performance Analyses
 
 <img class="m-auto" src="/pics/query-analyses.png" alt="in-place vs. out-of-place" width="600"/>
-
 ---
 
 # Merge Schedulers 2 - Size Ratio
 
 <img class="m-auto" src="/pics/size-ratio.png" alt="in-place vs. out-of-place" width="360"/>
-
 ---
 
 # Merge Schedulers: Recap
@@ -233,22 +223,19 @@ title: Measuring Latency
 - utilize **concurrency** schedulers
 - a proposed **greedy scheduler** works well
 - also did some other analyses
-
 ---
 
 # Roadmap
 <div class="mt-8"/>
 
 <TOC class="mt-24" count="4"/>
-
 ---
 
 # Partitioned Merges Analyses
 
 <img class="mx-auto" src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
 
-- 
-
+- single-threaded scheduler will be enough
 ---
 
 # Lessons and Conclusions
@@ -260,14 +247,12 @@ title: Measuring Latency
 - a good scheduler can help achieve stable write throughput:
   - for full merges, the proposed **greedy scheduler**
   - for partitioned merges, 
-
 ---
 
 # Roadmap
 <div class="mt-8"/>
 
 <TOC class="mt-24" count="5"/>
-
 ---
 
 # References
@@ -280,8 +265,6 @@ title: Measuring Latency
 
 - [5] P. Guo, “Log Structured Merge Tree.” [Online]. Available: https://lrita.github.io/images/posts/database/lsmtree-170129180333.pdf
 - [6] “The Log-Structured Merge-Tree (LSM Tree) | the morning paper.” https://blog.acolyer.org/2014/11/26/the-log-structured-merge-tree-lsm-tree/ (accessed May 30, 2021).
-
-
 ---
 
 # References
@@ -291,4 +274,3 @@ title: Measuring Latency
 - [9] K. Rott, intfrr/lsmtree. 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/intfrr/lsmtree
 
 - Tip: search "lsm-tree" or similar keywords on GitHub for community implementations
-
