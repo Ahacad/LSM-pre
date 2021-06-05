@@ -164,7 +164,18 @@ title: Measuring Latency
 <TOC class="mt-24" count="3"/>
 ---
 
-# Merge Shedulers 1 - full merges
+# Full Merges Analyses - 1: Scheduling
+
+- **global component constraint** better than local component constraint:
+  - limit on disk componet number
+  - more component = less write stalls BUT worse query performance
+- **process writes** as quickly as possible minimizes latencies
+- **concurrent merges** matter
+- finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span>
+
+---
+
+# Full Merges Analyses - 2: Experiments
 
 ---
 
