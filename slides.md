@@ -169,16 +169,11 @@ title: Measuring Latency
 <div class="">
 
 - **global component constraint** better than local component constraint:
-  - component constraint: limit on disk componet number
-  - more component = less write stalls BUT worse query performance and takes more space
-  - local constraint: limit on each level
-  - global constraint: limit on all components
 - **process writes** as quickly as possible minimizes write latency:
-  - when *component constraint* violated, needs to slow down or stop writes
-  - current implementations (LevelDB, RocksDB, bLSM) prefers slowdown
 - **concurrent merges** matter:
   - process merges on each level concurrently
 - finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span> for better variability performances:
+  - a single-thread sheduler does not work currently
   - a *fair* scheduler allocate I/O bandwidth to all merges equally
   - a <span class="font-bold text-red-400">greedy scheduler</span> prefers the merge with smallest remaining bytes first
   - greedy scheduler minimizes number of components
@@ -187,16 +182,55 @@ title: Measuring Latency
 
 ---
 
-# Full Merges Analyses - 2: Experiments
+# Full Merges Analyses - 2: variability
 
 <img class="m-auto" src="/pics/full-running-1.png" alt="in-place vs. out-of-place" width="600"/>
 
-- stable write throughput can be achieved
+- **stable write throughput** can be achieved
 - the greedy scheduler does well
 
 ---
 
-# Merge Shedulers 2 - partitioned merges
+# Merge Shedulers 2 - Global Constaint
+
+<img class="m-auto" src="/pics/component-constraint.png" alt="in-place vs. out-of-place" width="360"/>
+
+- **global component constraint** better than local component constraint:
+  - component constraint: limit on disk componet number
+  - more components = less write stalls BUT worse query performance and takes more space
+  - local constraint: limit on each level
+  - global constraint: limit on all components
+ 
+---
+
+# Merge Shedulers 2 - Write Quickly
+
+<img class="m-auto" src="/pics/write-limit.png" alt="in-place vs. out-of-place" width="360"/>
+
+- **process writes** as quickly as possible minimizes write latency:
+  - when *component constraint* violated, needs to slow down or stop writes
+  - current implementations (LevelDB, RocksDB, bLSM) prefers slowdown
+
+---
+
+# Merge Schedulers 2 - Query Performance Analyses
+
+<img class="m-auto" src="/pics/query-analyses.png" alt="in-place vs. out-of-place" width="600"/>
+
+---
+
+# Merge Schedulers 2 - Size Ratio
+
+<img class="m-auto" src="/pics/size-ratio.png" alt="in-place vs. out-of-place" width="360"/>
+
+---
+
+# Merge Schedulers: Recap
+
+
+- utilize **concurrency** schedulers
+- a proposed **greedy scheduler** works well
+- also did some other analyses
 
 ---
 
