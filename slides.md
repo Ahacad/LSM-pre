@@ -50,8 +50,6 @@ title:
 
 <TOC class="mt-24" count="1"/>
 ---
-
----
 title: Introduction to LSM-tree
 ---
 
@@ -123,12 +121,14 @@ title: Introduction to LSM-tree
 
 ---
 
+# LSM (Log-Structured Merge-Tree): Recap
+
+---
+
 # Roadmap
 <div class="mt-8"/>
 
 <TOC class="mt-24" count="2"/>
-
----
 
 ---
 title: Measuring Latency
@@ -223,3 +223,4 @@ title: Measuring Latency
 - [7] K. Rott, intfrr/lsmtree. 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/intfrr/lsmtree
 
 - Tip: search "lsm-tree" or similar keywords on GitHub for community implementations
+
