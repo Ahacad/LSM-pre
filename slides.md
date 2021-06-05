@@ -220,7 +220,10 @@ title: Measuring Latency
 
 - utilize **concurrency** schedulers
 - a proposed **greedy scheduler** works well
-- also did some other analyses
+- some other analyses for possible improving:
+  - gloabl component constraint
+  - write quickly
+  - size ratio ($T$)
 ---
 
 # Roadmap
