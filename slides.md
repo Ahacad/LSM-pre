@@ -245,7 +245,7 @@ title: Measuring Latency
 <div class="mt-12"/>
 
 - utilize **concurrency** schedulers
-- a proposed **greedy scheduler** works well
+- a proposed <span class="font-bold text-red-400">greedy scheduler</span> works well
 - some other analyses for possible improving:
   - gloabl component constraint
   - write quickly
@@ -258,11 +258,55 @@ title: Measuring Latency
 <TOC class="mt-24" count="4"/>
 ---
 
-# Partitioned Merges Analyses
+# Partitioned Merges Analyses - 1
 
 <img class="mx-auto" src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
 
-- single-threaded scheduler will be enough
+<div class="mt-8"/>
+
+- single-threaded scheduler will be enough, since merges happen once a level is full
+- use LevelDB to analyze
+
+---
+
+# Partitioned Merges Analyses - 2
+
+<img class="mx-auto" src="/pics/leveldb-vary.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="400"/>
+
+<div class="mt-8"/>
+
+- it's ok, but emmm... not so good
+
+---
+
+# Partitioned Merges Analyses - 3
+
+<img class="mx-auto" src="/pics/lsm-shift.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="360"/>
+<div class="mt-8"/>
+
+- $T_0$: minimum number of mergeable components, $T_0'$: maximum number of components
+- the problem: in the tesing phase a LSM-tree shifts to (b) because writes come quickly
+- causes:
+  - may cause write stalls in the running phase
+  - suboptimal trade-offs because ratio no longer the same<sup>[3]</sup>
+  - more disk usage
+- we just explicitly ensure that always merge $T_0$ components
+---
+
+# Partitioned Merges Analyses - 4
+
+<img class="mx-auto" src="/pics/leveldb-throughput.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="400"/>
+<div class="mt-8"/>
+
+- fixed the previous problem
+- the single-threaded scheduler is enough to achieve stable write throughput
+
+---
+
+# Roadmap
+<div class="mt-8"/>
+
+<TOC class="mt-24" count="5"/>
 ---
 
 # Lessons and Conclusions
@@ -272,14 +316,14 @@ title: Measuring Latency
 - consider performance variance together with write throughput for usability
 - use the new two-phase approach to evaluate the impact of write stalls
 - a good scheduler can help achieve stable write throughput:
-  - for full merges, the proposed **greedy scheduler**
-  - for partitioned merges, 
+  - for full merges, the proposed <span class="font-bold text-red-400">greedy scheduler</span>
+  - for partitioned merges, the single-threaded scheduler is enough
 ---
 
 # Roadmap
 <div class="mt-8"/>
 
-<TOC class="mt-24" count="5"/>
+<TOC class="mt-24" count="6"/>
 ---
 
 # References
@@ -301,3 +345,4 @@ title: Measuring Latency
 - [9] K. Rott, intfrr/lsmtree. 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/intfrr/lsmtree
 
 - Tip: search "lsm-tree" or similar keywords on GitHub for community implementations
+- See more detailed parameters analyses in the paper!
