@@ -7,7 +7,9 @@ background: https://source.unsplash.com/collection/94734566/1920x1080
 class: 'text-center'
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
+title:
 ---
+
 # On Performance Stability in LSM-based Storage Systems
 
 <div class="text-gray-400">Check the website <a href="https://ahacad.github.io/LSM-pre">https://ahacad.github.io/LSM-pre</a> for online slides.</div>
@@ -31,7 +33,7 @@ highlighter: shiki
 
 - Memory FASTER THAN disk
 - **writes stalls** happen when manipulating disks, and it affects usability
-- let's try to solve it by tweaking merge shedulers
+- let's try to solve it by tweaking **merge shedulers**
 
 <arrow v-click="1" x1="600" y1="220" x2="698" y2="190" color="#324f15aa" width="1" arrowSize="1" />
 
@@ -47,6 +49,10 @@ highlighter: shiki
 <div class="mt-8"/>
 
 <TOC class="mt-24" count="1"/>
+---
+
+---
+title: Introduction to LSM-tree
 ---
 
 <img class="m-auto" src="/pics/database-storage-engines.png" alt="in-place vs. out-of-place" width="800"/>
@@ -124,6 +130,10 @@ highlighter: shiki
 
 ---
 
+---
+title: Measuring Latency
+---
+
 # Measuring Latency: 2 phases
 
 <div class="mt-12"/>
@@ -142,7 +152,7 @@ highlighter: shiki
 <div class="mt-12"/>
 
 <img class="m-auto" src="/pics/two-phase-evaluation.png" alt="Two-Phase Evaluation of bLSM" width="650"/>
-<div class="mt-4"/>
+<div class="mt-12"/>
 
 - write latency = processing latency + queuing latency
 
@@ -194,4 +204,3 @@ highlighter: shiki
 
 - [5] P. Guo, “Log Structured Merge Tree.” [Online]. Available: https://lrita.github.io/images/posts/database/lsmtree-170129180333.pdf
 - [6] “The Log-Structured Merge-Tree (LSM Tree) | the morning paper.” https://blog.acolyer.org/2014/11/26/the-log-structured-merge-tree-lsm-tree/ (accessed May 30, 2021).
-
