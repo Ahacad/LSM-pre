@@ -169,17 +169,16 @@ title: Measuring Latency
 - **process writes** as quickly as possible minimizes write latency:
 - **concurrent merges** matter:
   - process merges on each level concurrently
-- finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span> for better variability performances:
+- finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span> for better variability performances
   - a single-thread sheduler does not work currently
   - a *fair* scheduler allocate I/O bandwidth to all merges equally
   - a <span class="font-bold text-red-400">greedy scheduler</span> prefers the merge with smallest remaining bytes first
   - greedy scheduler minimizes number of components
   
 </div>
-
 ---
 
-# Full Merges Analyses - 2: variability
+# Full Merges Analyses - 2: Variability
 
 <img class="m-auto" src="/pics/full-running-1.png" alt="in-place vs. out-of-place" width="600"/>
 
@@ -187,7 +186,7 @@ title: Measuring Latency
 - the greedy scheduler does well
 ---
 
-# Merge Shedulers 2 - Global Constaint
+# Full Merges Analyses - 3: Global Constaint
 
 <img class="m-auto" src="/pics/component-constraint.png" alt="in-place vs. out-of-place" width="360"/>
 
@@ -198,7 +197,7 @@ title: Measuring Latency
   - global constraint: limit on all components
 ---
 
-# Merge Shedulers 2 - Write Quickly
+# Full Merges Analyses - 4: Write Quickly
 
 <img class="m-auto" src="/pics/write-limit.png" alt="in-place vs. out-of-place" width="360"/>
 
@@ -207,18 +206,17 @@ title: Measuring Latency
   - current implementations (LevelDB, RocksDB, bLSM) prefers slowdown
 ---
 
-# Merge Schedulers 2 - Query Performance Analyses
+# Full Merges Analyses - 5: Query Performance Analyses
 
 <img class="m-auto" src="/pics/query-analyses.png" alt="in-place vs. out-of-place" width="600"/>
 ---
 
-# Merge Schedulers 2 - Size Ratio
+# Full Merges Analyses - 6: Size Ratio
 
 <img class="m-auto" src="/pics/size-ratio.png" alt="in-place vs. out-of-place" width="360"/>
 ---
 
-# Merge Schedulers: Recap
-
+# Full Merges Analyses: Recap
 
 - utilize **concurrency** schedulers
 - a proposed **greedy scheduler** works well
