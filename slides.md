@@ -247,7 +247,7 @@ title: Measuring Latency
 
 <img class="mx-auto" src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
 
-- s
+- 
 
 ---
 
@@ -281,11 +281,14 @@ title: Measuring Latency
 - [5] P. Guo, “Log Structured Merge Tree.” [Online]. Available: https://lrita.github.io/images/posts/database/lsmtree-170129180333.pdf
 - [6] “The Log-Structured Merge-Tree (LSM Tree) | the morning paper.” https://blog.acolyer.org/2014/11/26/the-log-structured-merge-tree-lsm-tree/ (accessed May 30, 2021).
 
+
 ---
 
 # References
 
-- [7] K. Rott, intfrr/lsmtree. 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/intfrr/lsmtree
+- [7] “RocksDB | A persistent key-value store,” RocksDB. http://rocksdb.org/ (accessed Jun. 05, 2021).
+- [8] google/leveldb. Google, 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/google/leveldb
+- [9] K. Rott, intfrr/lsmtree. 2021. Accessed: Jun. 05, 2021. [Online]. Available: https://github.com/intfrr/lsmtree
 
 - Tip: search "lsm-tree" or similar keywords on GitHub for community implementations
 
