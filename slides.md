@@ -105,8 +105,8 @@ title: Introduction to LSM-tree
 <div class="mt-12"/>
 
 <figure class="m-auto">
-<img src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
-<figcaption class="pl-8 text-xs">Partitioned LSM-tree, Leveling Merge Policy</figcaption>
+<img class="mx-auto" src="/pics/partition.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="300"/>
+<figcaption class="pl-78 text-xs">Partitioned LSM-tree, Leveling Merge Policy</figcaption>
 </figure>
 
 <div class="mt-4"/>
@@ -121,7 +121,18 @@ title: Introduction to LSM-tree
 
 # LSM (Log-Structured Merge-Tree): Recap
 
-- 
+<div class="mt-12"/>
+
+<img class="m-auto" src="/pics/lsm-tree.jpg" alt="LSM-tree" width="250"/>
+
+<div class="mt-8"/>
+
+- multi-level, only add, flush and merge
+- two merge policies: leveling and tiering
+- one optimization: partitioning
+- We'll analyze LSM-tree later
+
+ 
 ---
 
 # Roadmap
@@ -144,15 +155,19 @@ title: Measuring Latency
 - testing phase: use the closed system to measure *maximum write throughput* ($M$)
 
 - running phase: use the open system with a 95% $M$ to see if the write latency will be stable
+- previous experiments used only the closed system, but the open system is more realistic
+- so we combine them both
 ---
 
-# Measuring Latency
+# Measuring Latency: Experiment
 <div class="mt-12"/>
 
 <img class="m-auto" src="/pics/two-phase-evaluation.png" alt="Two-Phase Evaluation of bLSM" width="650"/>
 <div class="mt-12"/>
 
 - write latency = processing latency + queuing latency
+- write stalls
+<arrow v-click="1" x1="400" y1="265" x2="460" y2="240" color="#324f15aa" width="1" arrowSize="1" />
 ---
 
 # Roadmap
