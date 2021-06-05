@@ -33,7 +33,7 @@ title:
 
 - Memory FASTER THAN disk
 - **writes stalls** happen when manipulating disks, and it affects usability
-- let's try to solve it by tweaking **merge shedulers**
+- let's try to solve it by tweaking **merge schedulers**
 
 <arrow v-click="1" x1="600" y1="220" x2="698" y2="190" color="#324f15aa" width="1" arrowSize="1" />
 ---
@@ -178,17 +178,18 @@ title: Measuring Latency
 
 # Full Merges Analyses - 1: Scheduling
 
-<div class="">
+<div class="mt-12">
 
-- **global component constraint** better than local component constraint:
-- **process writes** as quickly as possible minimizes write latency:
+- **global component constraint** better than local component constraint
+- **process writes** as quickly as possible minimizes write latency
 - **concurrent merges** matter:
   - process merges on each level concurrently
 - finally, the paper proposes a <span class="font-bold text-red-400">greedy scheduler</span> for better variability performances
-  - a single-thread sheduler does not work currently
+  - 3 schedulers for comparison: the *single-thread* scheduler, the *fair* scheduler, and the <span class="font-bold text-red-400">greedy</span> scheduler
+  - a single-thread scheduler does not work concurrently
   - a *fair* scheduler allocate I/O bandwidth to all merges equally
   - a <span class="font-bold text-red-400">greedy scheduler</span> prefers the merge with smallest remaining bytes first
-  - greedy scheduler minimizes number of components
+  - the greedy scheduler minimizes number of components
   
 </div>
 ---
@@ -224,14 +225,24 @@ title: Measuring Latency
 # Full Merges Analyses - 5: Query Performance Analyses
 
 <img class="m-auto" src="/pics/query-analyses.png" alt="in-place vs. out-of-place" width="600"/>
+
+- use Bloom filters to speed up point lookup
+- greedy scheduler has better performance because it minimizes components
+- write stalls (see the arrow)
+<arrow v-click="1" x1="480" y1="360" x2="540" y2="350" color="#324f15aa" width="1" arrowSize="1" />
 ---
 
 # Full Merges Analyses - 6: Size Ratio
 
 <img class="m-auto" src="/pics/size-ratio.png" alt="in-place vs. out-of-place" width="360"/>
+
+<div class="mt-12"/>
+
+- higer size ratio means fewer merges for tiering
 ---
 
 # Full Merges Analyses: Recap
+<div class="mt-12"/>
 
 - utilize **concurrency** schedulers
 - a proposed **greedy scheduler** works well
