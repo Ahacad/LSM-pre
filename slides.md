@@ -206,6 +206,7 @@ title: Measuring Latency
   - a *fair* scheduler allocate I/O bandwidth to all merges equally
   - a <span class="font-bold text-red-400">greedy scheduler</span> prefers the merge with smallest remaining bytes first
   - the greedy scheduler minimizes number of components
+- we are going to see *many* pictures next
   
 </div>
 ---
