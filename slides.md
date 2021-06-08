@@ -31,7 +31,8 @@ title:
 
 <div class="mt-8" />
 
-- Memory FASTER THAN disk
+- LSM-tree is good at writing 
+- BUT memory FASTER THAN disk
 - **writes stalls** happen when manipulating disks, and it affects usability
 - let's try to solve it by tweaking **merge schedulers**
 
@@ -71,12 +72,16 @@ title: Introduction to LSM-tree
 </figure>
 </div>
 
+<div class="mt-8"/>
+
 - unlike B+ tree (in-place update) which overwrites old entries, we store updates into new locations <span class="text-gray-400">(Fig. 1)</span>
-- only append operations (insert OR update), delete = anti-matter entry, like writing everything into a "log"
+- only **append** operations (insert OR update), delete = anti-matter entry, like writing everything into a "log"
 
-- **buffers** all writes in memory ($C_0$), and **flushes** them to disk and **merges** later<span class="text-gray-400">(Fig. 2)</span>
+<br/>
 
-- quick write (due to sequential I/Os), but slow read
+- buffers all writes in memory ($C_0$), and **flushes** them to disk and **merges** later (do compactions)<span class="text-gray-400">(Fig. 2)</span>
+
+- quick write (due to sequential I/Os), but possibly slow read
 ---
 
 # LSM (Log-Structured Merge-Tree) - 2: Merging
@@ -85,10 +90,14 @@ title: Introduction to LSM-tree
 <div class="grid grid-cols-2">
 <div>
 
-  - today's LSM-tree use <span class="font-bold">merging</span> to reduce components examined when querying
-  - two merging policies: leveling merge policy & tiering merge policy
-  - <span class="font-bold">leveling</span>: 1 component, merged with Level $i-1$ until big enough and then merged into Level $i+1$
-  - <span class="font-bold">tiering</span>: T components at Level $i$, then merged together to Level $i+1$
+- today's LSM-tree use <span class="font-bold">merging</span> to reduce components examined when querying (compaction)
+- two merging policies: leveling merge policy & tiering merge policy
+- <span class="font-bold">leveling</span>: 1 component, merged with Level $i-1$ until big enough and then merged into Level $i+1$
+- <span class="font-bold">tiering</span>: T components at Level $i$, then merged together to Level $i+1$
+
+<br/>
+
+- we'll analyze this in Part III
 
 </div>
 
@@ -113,10 +122,12 @@ title: Introduction to LSM-tree
 
 - **Partitioning**: large LSM disk component range-partitioned into multiple files for optimization
 - partitioning and merge policies can be used together, currently LevelDB and RocksDB use partitioned leveling policy
-
 - **Write Stalls**: memory speed faster than I/Os, writing to memory will be **stalled** (the *write stall* problem)
-
 - **merges** are major cause of stalls, since components are merged multiple times, but writes only flush once
+
+<br/>
+
+- we'll analyze this in Part IV
 ---
 
 # LSM (Log-Structured Merge-Tree): Recap
@@ -127,9 +138,10 @@ title: Introduction to LSM-tree
 
 <div class="mt-8"/>
 
-- multi-level, only add, flush and merge
-- two merge policies: leveling and tiering
-- one optimization: partitioning
+- multi-level, only append, flush and merge
+- 2 merge policies: leveling and tiering
+- 1 optimization: partitioning
+- some keywords: component, write throughput, write stalls, 
 - We'll analyze LSM-tree later
 
  
@@ -166,8 +178,12 @@ title: Measuring Latency
 <div class="mt-12"/>
 
 - write latency = processing latency + queuing latency
-- write stalls
+- clear write stalls
+- let's try to solve it
 <arrow v-click="1" x1="400" y1="265" x2="460" y2="240" color="#324f15aa" width="1" arrowSize="1" />
+
+
+
 ---
 
 # Roadmap
@@ -216,6 +232,8 @@ title: Measuring Latency
 # Full Merges Analyses - 4: Write Quickly
 
 <img class="m-auto" src="/pics/write-limit.png" alt="in-place vs. out-of-place" width="360"/>
+
+<div class="mt-8"/>
 
 - **process writes** as quickly as possible minimizes write latency:
   - when *component constraint* violated, needs to slow down or stop writes
@@ -284,7 +302,7 @@ title: Measuring Latency
 <img class="mx-auto" src="/pics/lsm-shift.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="360"/>
 <div class="mt-8"/>
 
-- $T_0$: minimum number of mergeable components, $T_0'$: maximum number of components
+- $T_0$: minimum number of mergeable components, $T_0'$: maximum number of  mergeable components
 - the problem: in the tesing phase a LSM-tree shifts to (b) because writes come quickly
 - causes:
   - may cause write stalls in the running phase
@@ -298,7 +316,7 @@ title: Measuring Latency
 <img class="mx-auto" src="/pics/leveldb-throughput.png" alt="partitioned LSM-tree with Leveling Merge Policy" width="400"/>
 <div class="mt-8"/>
 
-- fixed the previous problem
+- fixed the problem last slide
 - the single-threaded scheduler is enough to achieve stable write throughput
 
 ---
@@ -313,7 +331,7 @@ title: Measuring Latency
 
 <div class="mt-20"/>
 
-- consider performance variance together with write throughput for usability
+- consider **performance variance** together with write throughput for usability
 - use the new two-phase approach to evaluate the impact of write stalls
 - a good scheduler can help achieve stable write throughput:
   - for full merges, the proposed <span class="font-bold text-red-400">greedy scheduler</span>
